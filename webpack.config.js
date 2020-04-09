@@ -18,6 +18,18 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(sc|c)ss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
     ],
   },
   plugins: [
@@ -26,4 +38,13 @@ module.exports = {
       filename: './index.html',
     }),
   ],
+  devServer: {
+    host: 'localhost',
+    historyApiFallback: true,
+    open: true,
+    hot: true,
+    disableHostCheck: true,
+    headers: { 'Access-Control-Allow-Origin': '*' },
+    https: false,
+  },
 };
